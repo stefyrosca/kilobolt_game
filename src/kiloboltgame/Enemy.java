@@ -1,29 +1,27 @@
 package kiloboltgame;
 
+import java.awt.Rectangle;
+
 public class Enemy {
-	private int maxHealth, currentHealth, power, speedX, centerX, centerY;
+	private int power, speedX, centerX, centerY;
 	private Background bg = StartingClass.getBg1();
-	
+	public Rectangle r = new Rectangle(0,0,0,0);
+	public int health = 5;
 	public void update() {
 		centerX += speedX;
 		speedX += bg.getSpeedX()*5;
+		r.setBounds(centerX - 25, centerY-25, 50, 60);
+		if (r.intersects(Robot.yellowRed)) {
+			checkCollision();
+		}
+	}
+	
+	private void checkCollision() {
+		if (r.intersects(Robot.rectBottom) || r.intersects(Robot.rectLeft) || r.intersects(Robot.rectRight) || r.intersects(Robot.rectUp)) {
+			System.out.println("collision");
+		}
 	}
 
-	public int getMaxHealth() {
-		return maxHealth;
-	}
-
-	public void setMaxHealth(int maxHealth) {
-		this.maxHealth = maxHealth;
-	}
-
-	public int getCurrentHealth() {
-		return currentHealth;
-	}
-
-	public void setCurrentHealth(int currentHealth) {
-		this.currentHealth = currentHealth;
-	}
 
 	public int getPower() {
 		return power;

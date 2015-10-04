@@ -126,19 +126,8 @@ public class Robot {
 			bg1.setSpeedX(-MOVESPEED / 5);
 			bg2.setSpeedX(-MOVESPEED / 5);
 		}
-
 		centerY += speedY;
-		// if (centerY + speedY >= GROUND) {
-		// centerY = GROUND;
-		// }
-
 		speedY++;
-			// if (centerY + speedY >= GROUND) {
-			// centerY = GROUND;
-			// speedY = 0;
-			// jumped = false;
-			// }
-			// }
 		if (speedY > 3) {
 			jumped = true;
 		}
